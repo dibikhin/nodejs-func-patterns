@@ -1,10 +1,13 @@
 // MongoDB adapter
 
-// Problems:
+// Problems, out of scope:
 //  1. Domains (person, user, bill)
 //  2. Queries (last updated, top 10, groupings) 
+//  3. Memoizing connect(...) calls
+//  4. Mongoose models importing
 
 var mongoose = require('mongoose'); // Adaptee
+
 var Person;
 
 module.exports = {
@@ -25,7 +28,8 @@ function connect(options) {
 }
 
 function get(query, callback) {
-    return Person.find(query).exec(callback);
+    var mongo_query = { _id: query.id };
+    return Person.find(mongo_query).exec(callback);
 
     // where('likes').in(['vaporizing', 'talking']).
     // limit(10).

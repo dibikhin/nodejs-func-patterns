@@ -1,6 +1,7 @@
 // Redis adapter
 
 var redis = require('redis'); // Adaptee
+
 var client;
 
 module.exports = {

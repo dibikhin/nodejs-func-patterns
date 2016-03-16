@@ -9,14 +9,8 @@ var person = {
     age: 21
 };
 
-var updated_person = {
-    id: '1234',
-    name: 'Mary',
-    age: 32
-};
-
 var functions = {
-    connect: connect,
+    init: init,
     get: get,
     add: add,
     update: update,
@@ -27,10 +21,10 @@ var functions = {
 var FakeMongoDBAdapter = _.extend({}, db);
 FakeMongoDBAdapter = _.extend(FakeMongoDBAdapter, functions);
 
-module.exports = FakeMongoDBAdapter;
+module.exports = FakeMongoDBAdapter; 
 
-function connect(options) {
-    console.log('connected to fake MongoDB adapter');
+function init(options) {
+    console.log('initialized fake MongoDB adapter');
 }
 
 function get(query, callback) {
@@ -42,6 +36,11 @@ function add(doc, callback) {
 }
 
 function update(conditions, doc, callback) {
+    var updated_person = {
+        id: '1234',
+        name: 'Mary',
+        age: 32
+    };
     return callback(null, updated_person);
 }
 

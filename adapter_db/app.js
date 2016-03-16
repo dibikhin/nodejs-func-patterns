@@ -1,4 +1,4 @@
-// The application to run with dependency injection
+// The client app
 
 module.exports = {
     run: run
@@ -9,8 +9,6 @@ function run(db) {
         name: 'Mary',
         age: 21
     };
-
-    db.connect('asdfasdf');
 
     db.add(person, function (err, added_person) {
         console.log('added person id: ' + added_person.id);
