@@ -1,2 +1,1 @@
-# nodejs-func-patterns
-Node.js GoF patterns in functional style
+# The Gang of Four patterns in a functional style for Node.js

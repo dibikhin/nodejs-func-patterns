@@ -12,8 +12,16 @@ var options = {
     connection_string: 'connection string'
 };
 
-mongoose.connect(options.connection_string);
+// TODO inhibit subsequent calls of connect(...)
+// mongoose.connect(options.connection_string);
 
-mongodb_adapter.init(mongoose, options, function (err, model) {
-   app.run(mongodb_adapter, model); 
+// mongodb_adapter.init(mongoose, options, function run_app(err, person_model) {
+//     app.run(mongodb_adapter, person_model);
+// });
+
+
+var fake_mongodb_adapter = require('./fake_mongodb_adapter');
+
+fake_mongodb_adapter.init(mongoose, options, function run_app(err, person_model) {
+    app.run(fake_mongodb_adapter, person_model);
 });

@@ -8,6 +8,7 @@ module.exports = {
     remove: remove
 };
 
+// TODO inhibit subsequent calls of init(...)
 function init(client, options, callback) {   
     var model = client.model(options.model_name, options.schema);
     return callback(null, model);
@@ -18,7 +19,7 @@ function get(client, query, callback) {
 }
 
 function add(client, doc, callback) {
-    var model = new client(doc); // 'client' is a mongoose 'model' indeed
+    var model = new client(doc); // 'client' awaits a mongoose 'model' indeed
     return model.save(callback);
 }
 
