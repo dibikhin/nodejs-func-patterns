@@ -19,7 +19,7 @@ function get(client, query, callback) {
 }
 
 function add(client, doc, callback) {
-    var model = new client(doc); // 'client' awaits a mongoose 'model' indeed
+    var model = new client(doc); // 'client' arg awaits a mongoose 'model' indeed
     return model.save(callback);
 }
 

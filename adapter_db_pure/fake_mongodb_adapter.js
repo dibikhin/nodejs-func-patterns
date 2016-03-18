@@ -1,8 +1,4 @@
 // Fake MongoDB adapter, w/o adaptee
-var _ = require('underscore');
-
-var db = require('./db');
-
 var person = {
     id: '1234',
     name: 'Mary',
@@ -10,7 +6,7 @@ var person = {
 };
 
 
-var functions = {
+module.exports = {
     init: init,
     get: get,
     add: add,
@@ -18,15 +14,9 @@ var functions = {
     remove: remove
 };
 
-// to be sure it's following the DB interface
-var FakeMongoDBAdapter = _.extend({}, db);
-FakeMongoDBAdapter = _.extend(FakeMongoDBAdapter, functions);
-
-module.exports = FakeMongoDBAdapter;
-
-
 function init(client, options, callback) {
     console.log('initialized fake MongoDB adapter');
+    return callback(null);
 }
 
 function get(client, query, callback) {
