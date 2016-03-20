@@ -4,19 +4,14 @@ var _ = require('underscore');
 
 var jsonfile = require('jsonfile'); // Adaptee
 
-var file;
+var file = 'dump.json';
 
 module.exports = {
-    connect: connect,
     get: get,
     add: add,
     update: update,
     remove: remove
 };
-
-function connect(options) {
-    file = 'dump.json';
-}
 
 function get(query, callback) {
     jsonfile.readFile(file, function (err, data) {

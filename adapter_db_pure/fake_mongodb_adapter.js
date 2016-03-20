@@ -1,23 +1,17 @@
 // Fake MongoDB adapter, w/o adaptee
+
 var person = {
     id: '1234',
     name: 'Mary',
     age: 21
 };
 
-
 module.exports = {
-    init: init,
     get: get,
     add: add,
     update: update,
     remove: remove
 };
-
-function init(client, options, callback) {
-    console.log('initialized fake MongoDB adapter');
-    return callback(null);
-}
 
 function get(client, query, callback) {
     return callback(null, person);

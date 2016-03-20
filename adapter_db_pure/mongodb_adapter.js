@@ -1,18 +1,11 @@
 // MongoDB adapter, pure
 
 module.exports = {
-    init: init,
     get: get,
     add: add,
     update: update,
     remove: remove
 };
-
-// TODO inhibit subsequent calls of init(...)
-function init(client, options, callback) {   
-    var model = client.model(options.model_name, options.schema);
-    return callback(null, model);
-}
 
 function get(client, query, callback) {
     return client.find(query).exec(callback);

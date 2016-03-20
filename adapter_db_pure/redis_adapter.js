@@ -1,22 +1,17 @@
 // Redis adapter
 
 // var redis = require('redis'); // Adaptee
-//var redis_client = client.createClient(options);
+// var redis_client = client.createClient(options);
+// redis_client.on('error', function (err) {
+//     console.log('Error ' + err);
+// });
 
 module.exports = {
-    init: init,
     get: get,
     add: add,
     update: update,
     remove: remove
 };
-
-function init(client, options, callback) {
-    client.on('error', function (err) {
-        console.log('Error ' + err);
-    });
-    return callback(null, client);
-}
 
 function get(client, query, callback) {
     client.get(query.id, function (err, reply) {
