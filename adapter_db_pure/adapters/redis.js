@@ -14,7 +14,7 @@ module.exports = {
 };
 
 function get(client, query, callback) {
-    client.get(query.id, function (err, reply) {
+    client.get(query._id, function (err, reply) {
         console.log(reply);
         return callback(null, reply);
     });
@@ -26,11 +26,11 @@ function add(client, obj, callback) {
 }
 
 function update(client, conditions, obj, callback) {
-    return client.set(conditions.id, JSON.stringify(obj), callback);
+    return client.set(conditions._id, JSON.stringify(obj), callback);
 }
 
 function remove(client, criteria, callback) {
-    return client.del(criteria.id, callback);
+    return client.del(criteria._id, callback);
 }
 
 function _print(err, reply) {

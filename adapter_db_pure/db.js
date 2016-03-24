@@ -19,11 +19,11 @@ function get(client, query, callback) {
     throw new Error('Function "get" not implemented');
 }
 
-function add(client, doc, callback) {
+function add(client, obj, callback) {
     throw new Error('Function "add" not implemented');
 }
 
-function update(client, conditions, doc, callback) {
+function update(client, conditions, obj, callback) {
     throw new Error('Function "update" not implemented');
 }
 

@@ -1,10 +1,10 @@
-var mongoose = require('mongoose');
+module.exports = create;
 
-var person_schema = {
-    name: String,
-    age: Number
+function create(mongoose) {
+    var person_schema = {
+        name: String,
+        age: Number
+    };
+
+    return mongoose.model('Person', person_schema);
 };
-
-var person_model = mongoose.model('Person', person_schema);
-
-module.exports = person_model;

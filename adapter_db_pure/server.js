@@ -6,10 +6,10 @@ var mongoose = require('mongoose'); // Adaptee
 
 var app = require('./app');
 var db = require('./db');
-var person_model = require('./person_model');
+var person_model = require('./person_model')(mongoose);
 var helpers = require('./helpers');
 
-var fake_mongodb_adapter_raw = require('./fake_mongodb_adapter');
+var fake_mongodb_adapter_raw = require('./adapters/file');
 
 // make the adapter failing if DB interface isn't implemented
 var fake_mongodb_adapter = helpers.extend(fake_mongodb_adapter_raw, db);

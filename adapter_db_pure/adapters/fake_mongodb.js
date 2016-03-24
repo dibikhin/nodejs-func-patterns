@@ -1,7 +1,7 @@
 // Fake MongoDB adapter, w/o adaptee
 
 var person = {
-    id: '1234',
+    _id: '1234',
     name: 'Mary',
     age: 21
 };
@@ -23,7 +23,7 @@ function add(client, doc, callback) {
 
 function update(client, conditions, doc, callback) {
     var updated_person = {
-        id: '1234',
+        _id: '1234',
         name: 'Mary',
         age: 32
     };

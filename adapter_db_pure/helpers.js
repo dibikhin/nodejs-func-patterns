@@ -6,7 +6,8 @@ module.exports = {
 
 /**
  * Creates a new object looking like @parent extended w/ @child.
- * All the props from @parent non-existing in @child will be visible. 
+ * All the props from @parent non-existing in @child will be visible
+ * (and should throw an error).
  */
 function extend(child, parent) {
     var extended = _.extend({}, parent);
