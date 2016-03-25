@@ -1,10 +1,11 @@
 /** @module DB
  *
  * Generic DB interface used by the client, it shouldn't be changed.
+ * Fails immidiately if not implemented due to it's an unrecoverable error.
  *
  * db.get(client, query, callback)
- * db.add(client, doc, callback)
- * db.update(client, conditions, doc, callback)
+ * db.add(client, obj, callback)
+ * db.update(client, conditions, obj, callback)
  * db.remove(client, criteria, callback)
  */
 

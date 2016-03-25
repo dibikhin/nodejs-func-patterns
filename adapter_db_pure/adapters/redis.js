@@ -15,14 +15,14 @@ module.exports = {
 
 function get(client, query, callback) {
     client.get(query._id, function (err, reply) {
-        console.log(reply);
         return callback(null, reply);
     });
 }
 
 function add(client, obj, callback) {
-    client.set('1234', 'string val', _print);
-    return callback(null, '1234');
+    var _id = '1234';
+    obj._id = _id;
+    return client.set(_id, JSON.stringify(obj), callback);
 }
 
 function update(client, conditions, obj, callback) {
@@ -31,12 +31,4 @@ function update(client, conditions, obj, callback) {
 
 function remove(client, criteria, callback) {
     return client.del(criteria._id, callback);
-}
-
-function _print(err, reply) {
-    if (err) {
-        console.log(err.toString());
-    } else {
-        console.log('Reply: ' + reply);
-    }
 }
