@@ -16,3 +16,7 @@ var fake_mongodb_adapter = helpers.extend(fake_mongodb_adapter_raw, db);
 mongoose.connect('conn str');
 
 app.run(fake_mongodb_adapter, person_model);
+
+// TODO test redis
+// TODO test file_ad. on empty dump
+// TODO 3 projs: simple (w/o pure & extending), pure, pure w/ extending
