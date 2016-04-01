@@ -1,10 +1,6 @@
 // Redis adapter
 
-// var redis = require('redis'); // Adaptee
-// var redis_client = client.createClient(options);
-// redis_client.on('error', function (err) {
-//     console.log('Error ' + err);
-// });
+var _ = require('underscore');
 
 module.exports = {
     get: get,
@@ -14,7 +10,7 @@ module.exports = {
 };
 
 function get(client, query, callback) {
-    client.get(query._id, function (err, reply) {
+    client.get(query._id, function(err, reply) {
         return callback(null, reply);
     });
 }
@@ -22,11 +18,19 @@ function get(client, query, callback) {
 function add(client, obj, callback) {
     var _id = '1234';
     obj._id = _id;
-    return client.set(_id, JSON.stringify(obj), callback);
+    client.set(_id, JSON.stringify(obj), function(err, reply) {
+        return callback(null, obj);
+    });
 }
 
+// obj is an object of new values
 function update(client, conditions, obj, callback) {
-    return client.set(conditions._id, JSON.stringify(obj), callback);
+    client.get(conditions._id, function(err, reply) {
+        var updated_obj = JSON.stringify(_.extend(reply, obj));
+        client.set(conditions._id, updated_obj, function(err, reply) {
+            return callback(null, updated_obj);
+        });
+    });
 }
 
 function remove(client, criteria, callback) {
